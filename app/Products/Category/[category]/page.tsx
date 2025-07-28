@@ -17,9 +17,8 @@ type PageProps = {
 
 export default async function CategoryPage({ params }: PageProps) {
   try {
-    const { category } = params;
     const response = await fetch(
-      `https://dummyjson.com/products/category/${category}`
+      `https://dummyjson.com/products/category/${params.category}`
     );
 
     if (!response.ok) {
@@ -31,17 +30,22 @@ export default async function CategoryPage({ params }: PageProps) {
     if (!data.products || data.products.length === 0) {
       return <div>No products found in this category</div>;
     }
-
     // Client-side component for filtering
     function ProductList({ products }: { products: IProduct[] }) {
-      const [searchTerm] = useState("");
-
+      const [searchTerm, setSearchTerm] = useState("");
       const filteredProducts = products.filter((product) =>
         product.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
 
       return (
         <div className="flex flex-col items-center gap-4 p-4">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="border p-2 w-full max-w-md mb-4"
+          />
           {filteredProducts.length === 0 ? (
             <Typography variant="h6">No products match your search</Typography>
           ) : (

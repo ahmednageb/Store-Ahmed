@@ -1,5 +1,4 @@
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
@@ -18,7 +17,7 @@ export default async function productCard() {
           href={`/Product/${product.id}`}
           key={product.id}
           style={{ textDecoration: "none" }}
-           className="transition-transform hover:scale-105"
+          className="transition-transform hover:scale-105"
         >
           <Card
             sx={{ maxWidth: 345, height: "100%" }}

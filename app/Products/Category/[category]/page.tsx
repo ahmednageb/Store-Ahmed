@@ -1,13 +1,11 @@
 import { notFound } from "next/navigation";
 import ProductList from "./ProductList";
 
-type PageProps = {
-  params: {
-    category: string;
-  };
-};
-
-export default async function CategoryPage({ params }: PageProps) {
+export default async function CategoryPage({
+  params,
+}: {
+  params: { category: string };
+}) {
   const { category } = params;
   const res = await fetch(
     `https://dummyjson.com/products/category/${category}`

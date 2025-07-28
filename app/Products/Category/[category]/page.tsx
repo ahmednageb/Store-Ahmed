@@ -9,11 +9,11 @@ import { Link } from "@mui/material";
 import { notFound } from "next/navigation";
 import { useState } from "react";
 
-interface PageProps {
+type PageProps = {
   params: {
     category: string;
   };
-}
+};
 
 export default async function CategoryPage({ params }: PageProps) {
   try {

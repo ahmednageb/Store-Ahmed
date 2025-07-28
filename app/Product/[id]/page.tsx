@@ -141,10 +141,9 @@ export default function ProductDetails() {
       <img src={product.thumbnail} alt={product.title} width={500} />
       <div>
         <div className="flex flex-col justify-center p-4 gap-5">
-
-        <h1 className="text-3xl font-bold">{product.title}</h1>
-        <p>{product.description}</p>
-        <p className="text-xl font-bold text-green-600">${product.price}</p>
+          <h1 className="text-3xl font-bold">{product.title}</h1>
+          <p>{product.description}</p>
+          <p className="text-xl font-bold text-green-600">${product.price}</p>
         </div>
 
         <div className="flex items-center ">

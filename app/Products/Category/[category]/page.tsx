@@ -5,7 +5,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Link, TextField } from "@mui/material";
+import { Link } from "@mui/material";
 import { notFound } from "next/navigation";
 import { useState } from "react";
 
@@ -17,7 +17,7 @@ interface PageProps {
 
 export default async function CategoryPage({ params }: PageProps) {
   try {
-    const {category} = params;
+    const { category } = params;
     const response = await fetch(
       `https://dummyjson.com/products/category/${category}`
     );
@@ -34,7 +34,7 @@ export default async function CategoryPage({ params }: PageProps) {
 
     // Client-side component for filtering
     function ProductList({ products }: { products: IProduct[] }) {
-      const [searchTerm, setSearchTerm] = useState("");
+      const [searchTerm] = useState("");
 
       const filteredProducts = products.filter((product) =>
         product.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -42,8 +42,6 @@ export default async function CategoryPage({ params }: PageProps) {
 
       return (
         <div className="flex flex-col items-center gap-4 p-4">
-
-
           {filteredProducts.length === 0 ? (
             <Typography variant="h6">No products match your search</Typography>
           ) : (
